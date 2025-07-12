@@ -147,12 +147,14 @@
   text-align: center;
   line-height: 24px;
   font-weight: 300;
+  font-size: small;
   color: #ddd;
 }
 
 .certificate img {
   width: 70px;
   height: 70px;
+  
 }
 
 .contactLink {

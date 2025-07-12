@@ -113,13 +113,13 @@ function Hero() {
           animate="animate"
           className="follow"
         >
-          <motion.a variants={followVariants} href="/">
+          <motion.a variants={followVariants} href="https://www.linkedin.com/in/amit-kumar-giri-53008124a">
             <img src="/linkedin.png" alt="" />
           </motion.a>
-          <motion.a variants={followVariants} href="/">
+          <motion.a variants={followVariants} href="https://twitter.com/Yellowamit">
             <img src="/twitter.png" alt="" />
           </motion.a>
-          <motion.a variants={followVariants} href="/">
+          <motion.a variants={followVariants} href="https://github.com/yellowamit">
             <img src="/github.png" alt="" />
           </motion.a>
           <motion.div variants={followVariants} className="followTextContainer">
@@ -134,7 +134,8 @@ function Hero() {
           transition={{ duration: 1 }}
           className="certificate"
         >
-          <img src="/certificate1.png" alt="" />
+          <a href="https://online.gndu.ac.in/"> <img src="/certificate1.png" alt="" /></a>
+         
           Btech
           <br />
           Computer Science
