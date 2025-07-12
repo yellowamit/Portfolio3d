@@ -16,7 +16,7 @@ A modern, interactive 3D portfolio built with React, Three.js, and Vite. This pr
 
 ## 🌐 Live Demo
 
-[Deployed Link Coming Soon!]
+[https://portfolio3d-opal.vercel.app/]
 
 ---
 
@@ -75,4 +75,4 @@ This project is licensed under the MIT License.
 
 ## 🌍 Deployed Link
 
-[Add your deployed link here]
+[https://portfolio3d-opal.vercel.app/]
