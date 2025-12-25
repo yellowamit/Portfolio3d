@@ -75,7 +75,7 @@ function Hero() {
             duration: 4,
             ease: "easeInOut",
           }}
-          href="#services"
+          href="#portfolio"
           className="scroll"
         >
           <svg
@@ -138,7 +138,7 @@ function Hero() {
          
           Btech
           <br />
-          Computer Science
+          Computer Science Engineering(2026)
           <br />
             Guru Nanak Dev University
         </motion.div>
