@@ -29,11 +29,21 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    const formData = new FormData(form.current);
+    const formValues = Object.fromEntries(formData);
+    
+    // Explicitly include email in the message body so it definitely shows up
+    const templateParams = {
+      name: formValues.name,
+      email: formValues.email,
+      message: `From: ${formValues.email}\n\n${formValues.message}`,
+    };
+
     emailjs
-      .sendForm(
+      .send(
         import.meta.env.VITE_SERVICE_ID,
         import.meta.env.VITE_TEMPLATE_ID,
-        form.current,
+        templateParams,
         {
           publicKey: import.meta.env.VITE_PUBLIC_KEY,
         }
