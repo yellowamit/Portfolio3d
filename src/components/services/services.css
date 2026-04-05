@@ -34,12 +34,12 @@
   width: 50%;
   padding: 30px;
   border-radius: 20px;
-  background-color: rgba(248, 243, 225, 0.08);
+  background-color: rgba(255, 172, 172, 0.08);
   display: flex;
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  border: 1px solid rgba(248, 243, 225, 0.08);
+  border: 1px solid rgba(255, 172, 172, 0.08);
 }
 
 .serviceIcon {
@@ -71,10 +71,10 @@
   background-color: var(--color-muted);
 }
 .service:nth-child(2) .serviceIcon {
-  background-color: #7d865d;
+  background-color: var(--color-soft);
 }
 .service:nth-child(3) .serviceIcon {
-  background-color: #c0b58d;
+  background-color: var(--color-cream);
 }
 
 .counterList {

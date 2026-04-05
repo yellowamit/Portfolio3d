@@ -5,12 +5,12 @@
 }
 
 :root {
-  --color-deep: #41431b;
-  --color-muted: #aeb784;
-  --color-soft: #e3dbbb;
-  --color-cream: #f8f3e1;
-  --color-surface: rgba(248, 243, 225, 0.08);
-  --color-border: rgba(248, 243, 225, 0.16);
+  --color-deep: #3e1e68;
+  --color-muted: #5d2f77;
+  --color-soft: #e45a92;
+  --color-cream: #ffacac;
+  --color-surface: rgba(255, 172, 172, 0.08);
+  --color-border: rgba(255, 172, 172, 0.16);
 }
 
 html {
@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background: linear-gradient(to bottom, var(--color-deep), #596032);
+  background: linear-gradient(to bottom, var(--color-deep), var(--color-muted));
   color: var(--color-cream);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
