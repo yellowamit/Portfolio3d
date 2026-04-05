@@ -65,7 +65,12 @@ const Portfolio = () => {
         {items.map((item) => (
           <motion.div className="pItem" key={item.id} variants={variants}>
             <div className="pImage">
-              <img src={item.img} alt={item.title} />
+              <img
+                src={item.img}
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div className="pText">
               <h2>{item.title}</h2>

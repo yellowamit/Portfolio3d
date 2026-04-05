@@ -18,6 +18,10 @@ body {
   overflow-x: hidden;
 }
 
+#root {
+  width: 100%;
+}
+
 a {
   text-decoration: none;
   color: white;
@@ -31,9 +35,17 @@ a {
   margin-right: auto;
 }
 
-section {
-  height: 100vh;
+.pageSection {
+  min-height: 100svh;
+  height: 100svh;
   scroll-snap-align: center;
+  position: relative;
+}
+
+.loadingSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 640px) {
@@ -63,5 +75,16 @@ section {
 @media (min-width: 1536px) {
   .container {
     max-width: 1536px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: none;
+  }
+
+  .pageSection {
+    height: auto;
+    min-height: 100svh;
   }
 }
