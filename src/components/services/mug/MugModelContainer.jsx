@@ -5,8 +5,8 @@ import { OrbitControls, PerspectiveCamera, Stage } from "@react-three/drei";
 
 const MugModelContainer = () => {
   return (
-    <Canvas>
-      <Suspense fallback="loading...">
+    <Canvas dpr={[1, 1.5]}>
+      <Suspense fallback={null}>
         <Stage environment="night" intensity={10}>
           <MugModel />
         </Stage>

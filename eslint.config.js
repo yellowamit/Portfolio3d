@@ -37,4 +37,10 @@ export default [
       ],
     },
   },
+  {
+    files: ["src/components/hero/Shape.jsx", "src/components/services/**/*.jsx"],
+    rules: {
+      "react/no-unknown-property": "off",
+    },
+  },
 ];

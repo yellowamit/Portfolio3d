@@ -1,11 +1,11 @@
-import "./hero.css";
-import { Canvas } from "@react-three/fiber";
-import "./hero.css";
-import Speech from "./Speech";
-import { motion } from "motion/react";
-
-import Shape from "./Shape";
 import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { motion } from "motion/react";
+import useIsMobile from "../../hooks/useIsMobile";
+import Shape from "./Shape";
+import Speech from "./Speech";
+import "./hero.css";
+
 const awardVariants = {
   initial: {
     x: -100,
@@ -35,11 +35,13 @@ const followVariants = {
     },
   },
 };
+
 function Hero() {
+  const isMobile = useIsMobile();
+
   return (
-      <div className="hero">
+    <div className="hero">
       <div className="hSection left">
-        {/* TITLE */}
         <motion.h1
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -48,26 +50,46 @@ function Hero() {
         >
           Hey There,
           <br />
-          <span> I'm Amit!</span>
+          <span>I&apos;m Amit!</span>
         </motion.h1>
-        {/* AWARDS */}
+
         <motion.div
           variants={awardVariants}
           initial="initial"
           animate="animate"
           className="awards"
         >
-          <motion.h2 variants={awardVariants}>Hey! I'm a mern stack developer</motion.h2>
+          <motion.h2 variants={awardVariants}>
+            Hey! I&apos;m a MERN stack developer
+          </motion.h2>
           <motion.p variants={awardVariants}>
             Just designed a new 3D website.
           </motion.p>
           <motion.div variants={awardVariants} className="awardList">
-            <motion.img variants={awardVariants} src="/award1.png" alt="" />
-            <motion.img variants={awardVariants} src="/award2.png" alt="" />
-            <motion.img variants={awardVariants} src="/award3.png" alt="" />
+            <motion.img
+              variants={awardVariants}
+              src="/award1.png"
+              alt="Award badge 1"
+              loading="lazy"
+              decoding="async"
+            />
+            <motion.img
+              variants={awardVariants}
+              src="/award2.png"
+              alt="Award badge 2"
+              loading="lazy"
+              decoding="async"
+            />
+            <motion.img
+              variants={awardVariants}
+              src="/award3.png"
+              alt="Award badge 3"
+              loading="lazy"
+              decoding="async"
+            />
           </motion.div>
         </motion.div>
-        {/* SCROLL SVG */}
+
         <motion.a
           animate={{ y: [0, 5], opacity: [0, 1, 0] }}
           transition={{
@@ -105,46 +127,55 @@ function Hero() {
           </svg>
         </motion.a>
       </div>
+
       <div className="hSection right">
-        {/* FOLLOW */}
         <motion.div
           variants={followVariants}
           initial="initial"
           animate="animate"
           className="follow"
         >
-          <motion.a variants={followVariants} href="https://www.linkedin.com/in/amit-kumar-giri-53008124a">
-            <img src="/linkedin.png" alt="" />
+          <motion.a
+            variants={followVariants}
+            href="https://www.linkedin.com/in/amit-kumar-giri-53008124a"
+          >
+            <img src="/linkedin.png" alt="LinkedIn" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a variants={followVariants} href="https://twitter.com/Yellowamit">
-            <img src="/twitter.png" alt="" />
+            <img src="/twitter.png" alt="Twitter" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a variants={followVariants} href="https://github.com/yellowamit">
-            <img src="/github.png" alt="" />
+            <img src="/github.png" alt="GitHub" loading="lazy" decoding="async" />
           </motion.a>
           <motion.div variants={followVariants} className="followTextContainer">
             <div className="followText">FOLLOW ME</div>
           </motion.div>
         </motion.div>
-        {/* BUBBLE */}
+
         <Speech />
-        {/* CERTIFICATE */}
+
         <motion.div
           animate={{ opacity: [0, 1] }}
           transition={{ duration: 1 }}
           className="certificate"
         >
-          <a href="https://online.gndu.ac.in/"> <img src="/certificate1.png" alt="" /></a>
-         
+          <a href="https://online.gndu.ac.in/">
+            <img
+              src="/certificate1.png"
+              alt="Guru Nanak Dev University certificate"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
           Btech
           <br />
           Computer Science Engineering(2026)
           <br />
-            Guru Nanak Dev University
+          Guru Nanak Dev University
         </motion.div>
-        {/* CONTACT BUTTON */}
+
         <motion.a
-          href="/#contact"
+          href="#contact"
           className="contactLink"
           animate={{
             x: [200, 0],
@@ -171,11 +202,11 @@ function Hero() {
                 d="M 100,100 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"
               />
               <text className="circleText">
-                <textPath href="#innerCirclePath">Hire Now •</textPath>
+                <textPath href="#innerCirclePath">Hire Now -</textPath>
               </text>
               <text className="circleText">
                 <textPath href="#innerCirclePath" startOffset="44%">
-                  Contact Me •
+                  Contact Me -
                 </textPath>
               </text>
             </svg>
@@ -196,18 +227,22 @@ function Hero() {
           </motion.div>
         </motion.a>
       </div>
-      <div className="bg">
-        {/* 3d */}
-        <Canvas>
-          <Suspense fallback="loading...">
-            <Shape />
-          </Suspense>
-        </Canvas>
-        <div className="hImg">
-          <img src="/hero.png" alt="" />
+
+      {!isMobile && (
+        <div className="bg">
+          <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 5], fov: 45 }}>
+            <Suspense fallback={null}>
+              <Shape />
+            </Suspense>
+          </Canvas>
         </div>
+      )}
+
+      <div className="hImg">
+        <img src="/hero.png" alt="Amit portrait" fetchPriority="high" />
       </div>
     </div>
   );
 }
-export default Hero
+
+export default Hero;

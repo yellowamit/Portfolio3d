@@ -1,10 +1,16 @@
-import ComputerModelContainer from "./computer/ComputerModelContainer";
-import ConsoleModelContainer from "./console/ConsoleModelContainer";
 import Counter from "./Counter";
-import MugModelContainer from "./mug/MugModelContainer";
 import "./services.css";
 import { motion, useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
+import useIsMobile from "../../hooks/useIsMobile";
+
+const ComputerModelContainer = lazy(() =>
+  import("./computer/ComputerModelContainer")
+);
+const ConsoleModelContainer = lazy(() =>
+  import("./console/ConsoleModelContainer")
+);
+const MugModelContainer = lazy(() => import("./mug/MugModelContainer"));
 
 const textVariants = {
   initial: {
@@ -61,7 +67,16 @@ const services = [
 const Services = () => {
   const [currentServiceId, setCurrentServiceId] = useState(1);
   const ref = useRef();
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, { margin: "-200px" });
+
+  const renderModel = () => {
+    if (currentServiceId === 1) return <ComputerModelContainer />;
+    if (currentServiceId === 2) return <MugModelContainer />;
+
+    return <ConsoleModelContainer />;
+  };
+
   return (
     <div className="services" ref={ref}>
       <div className="sSection left">
@@ -85,7 +100,12 @@ const Services = () => {
               onClick={() => setCurrentServiceId(service.id)}
             >
               <div className="serviceIcon">
-                <img src={service.img} alt="" />
+                <img
+                  src={service.img}
+                  alt={service.title}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className="serviceInfo">
                 <h2>{service.title}</h2>
@@ -99,15 +119,13 @@ const Services = () => {
           <Counter from={0} to={30} text="Github Repos" />
         </div>
       </div>
-      <div className="sSection right">
-        {currentServiceId === 1 ? (
-          <ComputerModelContainer />
-        ) : currentServiceId === 2 ? (
-          <MugModelContainer />
-        ) : (
-          <ConsoleModelContainer />
-        )}
-      </div>
+      {!isMobile && (
+        <div className="sSection right">
+          <Suspense fallback={<div className="modelFallback">Loading model...</div>}>
+            {renderModel()}
+          </Suspense>
+        </div>
+      )}
     </div>
   );
 };

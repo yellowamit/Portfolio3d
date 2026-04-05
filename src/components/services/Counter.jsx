@@ -9,6 +9,8 @@ const Counter = ({ from, to, text }) => {
   const isInView = useInView(ref);
 
   useEffect(() => {
+    if (!isInView) return undefined;
+
     const animation = animate(from, to, {
       duration: 4,
       ease: "easeOut",
