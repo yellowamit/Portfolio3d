@@ -41,11 +41,11 @@
 .hTitle {
   margin-top: 50px;
   font-size: 100px;
-  color: pink;
+  color: var(--color-soft);
 }
 
 .hTitle span {
-  color: white;
+  color: var(--color-cream);
 }
 
 .awards {
@@ -54,7 +54,7 @@
 
 .awards p {
   font-size: 14px;
-  color: #ddd;
+  color: rgba(248, 243, 225, 0.74);
   margin: 16px 0px;
 }
 
@@ -67,7 +67,7 @@
   width: 36px;
   height: 36px;
   padding: 8px;
-  background-color: white;
+  background-color: var(--color-cream);
   border-radius: 100%;
 }
 
@@ -85,7 +85,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  background-color: #2f204e;
+  background-color: rgba(227, 219, 187, 0.14);
   border-bottom-right-radius: 10px;
 }
 
@@ -100,7 +100,7 @@
 }
 
 .followText {
-  background-color: #dd4c62;
+  background-color: var(--color-muted);
   font-size: 12px;
   rotate: 90deg;
   width: max-content;
@@ -124,8 +124,8 @@
 .bubble {
   width: 100%;
   height: 100px;
-  background-color: white;
-  color: #555;
+  background-color: var(--color-cream);
+  color: var(--color-deep);
   padding: 24px;
   font-size: 18px;
   border-radius: 20px 20px 0px 20px;
@@ -136,7 +136,7 @@
   height: 50px;
   border-radius: 100%;
   object-fit: cover;
-  background-color: #dd4c62;
+  background-color: var(--color-muted);
 }
 
 .certificate {
@@ -149,7 +149,7 @@
   line-height: 24px;
   font-weight: 300;
   font-size: small;
-  color: #ddd;
+  color: rgba(248, 243, 225, 0.78);
 }
 
 .certificate img {
@@ -169,6 +169,7 @@
 .circleText {
   letter-spacing: 3px;
   font-size: 20px;
+  fill: var(--color-deep);
 }
 
 .arrow {
@@ -191,6 +192,37 @@
   }
 }
 
+@media (max-width: 1440px) {
+  .hero {
+    padding-top: 24px;
+  }
+
+  .hSection {
+    justify-content: space-around;
+  }
+
+  .hTitle {
+    margin-top: 20px;
+    font-size: 64px;
+  }
+
+  .awards {
+    width: 48%;
+  }
+
+  .bubbleContainer {
+    width: 72%;
+  }
+
+  .certificate {
+    width: 70%;
+  }
+
+  .contactLink {
+    margin-bottom: 24px;
+  }
+}
+
 @media (max-width: 1280px) {
   .bg {
     height: 60%;
@@ -203,11 +235,11 @@
   }
 
   .hTitle {
-    font-size: 88px;
+    font-size: 72px;
   }
 
   .awards {
-    width: 60%;
+    width: 70%;
   }
 
   .bubbleContainer {
@@ -217,11 +249,73 @@
 
 @media (max-width: 1024px) {
   .bg {
-    height: 50%;
+    height: 44%;
   }
 
   .hTitle {
-    font-size: 72px;
+    font-size: 56px;
+  }
+
+  .hero {
+    gap: 12px;
+  }
+
+  .awards {
+    width: 82%;
+  }
+
+  .follow {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .bubbleContainer {
+    width: 100%;
+  }
+
+  .bubble {
+    height: auto;
+    min-height: 88px;
+    padding: 18px;
+    font-size: 16px;
+  }
+
+  .certificate {
+    width: 82%;
+    line-height: 20px;
+  }
+
+  .contactButton svg {
+    width: 128px;
+    height: 128px;
+  }
+
+  .arrow {
+    width: 68px;
+    height: 68px;
+  }
+}
+
+@media (max-height: 900px) and (min-width: 769px) {
+  .hero {
+    padding-top: 16px;
+  }
+
+  .hSection {
+    justify-content: space-around;
+  }
+
+  .hTitle {
+    margin-top: 8px;
+    font-size: 54px;
+  }
+
+  .scroll {
+    margin-bottom: 20px;
+  }
+
+  .contactLink {
+    margin-bottom: 12px;
   }
 }
 

@@ -2,7 +2,6 @@ import "./contact.css";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
-import ContactSvg from "./ContactSvg";
 
 const listVariant = {
   initial: {
@@ -66,15 +65,24 @@ const Contact = () => {
   return (
     <div className="contact" ref={ref}>
       <div className="cSection">
+        <motion.div
+          variants={listVariant}
+          animate={isInView ? "animate" : "initial"}
+          className="contactCopy"
+        >
+          <p className="contactEyebrow">Contact</p>
+          <h1 className="cTitle">Let&apos;s build something useful together</h1>
+          <p className="contactText">
+            Have a project, freelance opportunity, or collaboration in mind?
+            Send a quick message and I&apos;ll get back to you.
+          </p>
+        </motion.div>
         <motion.form
           ref={form}
           onSubmit={sendEmail}
           variants={listVariant}
           animate={isInView ? "animate" : "initial"}
         >
-          <motion.h1 variants={listVariant} className="cTitle">
-            Let&apos;s keep in touch
-          </motion.h1>
           <motion.div variants={listVariant} className="formItem">
             <label>Name</label>
             <input type="text" name="name" placeholder="John Doe" required />
@@ -108,7 +116,6 @@ const Contact = () => {
           {error && <span>Something went wrong!</span>}
         </motion.form>
       </div>
-      <div className="cSection"><ContactSvg/></div>
     </div>
   );
 };

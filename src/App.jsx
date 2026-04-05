@@ -4,6 +4,7 @@ const Hero = lazy(() => import("./components/hero/Hero"));
 const Services = lazy(() => import("./components/services/Services"));
 const Portfolio = lazy(() => import("./components/portfolio/Portfolio"));
 const Contact = lazy(() => import("./components/contact/Contact"));
+const Footer = lazy(() => import("./components/footer/Footer"));
 
 const App = () => {
   return (
@@ -35,8 +36,11 @@ const App = () => {
       <Suspense
         fallback={<section className="pageSection loadingSection">Loading...</section>}
       >
-        <section id="contact" className="pageSection">
-          <Contact />
+        <section id="contact" className="pageSection pageSectionLast">
+          <div className="contactPageShell">
+            <Contact />
+            <Footer compact />
+          </div>
         </section>
       </Suspense>
     </div>
