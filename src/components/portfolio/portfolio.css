@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(65, 67, 27, 0.4), rgba(65, 67, 27, 0.85));
+  background: linear-gradient(180deg, rgba(62, 30, 104, 0.35), rgba(93, 47, 119, 0.88));
   overflow: hidden;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .pItem {
-  background-color: rgba(248, 243, 225, 0.06);
+  background-color: rgba(255, 172, 172, 0.06);
   border-radius: 20px;
   padding: 20px;
   display: flex;
@@ -50,14 +50,14 @@
   gap: 20px;
   width: 350px;
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(248, 243, 225, 0.1);
+  border: 1px solid rgba(255, 172, 172, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pItem:hover {
   transform: translateY(-10px);
   box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
-  background-color: rgba(248, 243, 225, 0.1);
+  background-color: rgba(255, 172, 172, 0.1);
 }
 
 .pImage {
