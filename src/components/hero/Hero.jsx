@@ -195,7 +195,7 @@ function Hero() {
             }}
           >
             <svg viewBox="0 0 200 200" width="150" height="150">
-              <circle cx="100" cy="100" r="90" fill="pink" />
+              <circle cx="100" cy="100" r="90" fill="var(--color-soft)" />
               <path
                 id="innerCirclePath"
                 fill="none"

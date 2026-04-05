@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ddd;
+  color: var(--color-soft);
 }
 
 .sTitle {
@@ -34,11 +34,12 @@
   width: 50%;
   padding: 30px;
   border-radius: 20px;
-  background-color: #2f213f;
+  background-color: rgba(248, 243, 225, 0.08);
   display: flex;
   align-items: center;
   gap: 16px;
   cursor: pointer;
+  border: 1px solid rgba(248, 243, 225, 0.08);
 }
 
 .serviceIcon {
@@ -67,13 +68,13 @@
 }
 
 .service:nth-child(1) .serviceIcon {
-  background-color: #dd4c62;
+  background-color: var(--color-muted);
 }
 .service:nth-child(2) .serviceIcon {
-  background-color: #025656;
+  background-color: #7d865d;
 }
 .service:nth-child(3) .serviceIcon {
-  background-color: #6c5c0c;
+  background-color: #c0b58d;
 }
 
 .counterList {
@@ -92,7 +93,7 @@
 
 .counter h1 {
   font-size: 48px;
-  color: #dd4c62;
+  color: var(--color-soft);
 }
 
 .counter p {
@@ -109,7 +110,7 @@
 
 @media (max-width: 1280px) {
   .sTitle {
-    font-size: 128px;
+    font-size: 82px;
   }
 
   .service {
@@ -125,6 +126,22 @@
   .service,
   .counterList {
     width: 100%;
+  }
+
+  .services {
+    gap: 24px;
+  }
+
+  .sSection {
+    justify-content: center;
+  }
+
+  .service {
+    padding: 22px;
+  }
+
+  .counter h1 {
+    font-size: 38px;
   }
 }
 
