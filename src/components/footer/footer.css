@@ -1,146 +1,233 @@
 .siteFooter {
+  width: 100%;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 28px 0 0;
-  border-top: 1px solid var(--color-border);
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 28px;
+  height: 100%;
+  min-height: 100%;
+  padding: 8px 0 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  text-align: left;
 }
 
 .siteFooter.compact {
-  padding-top: 22px;
-  gap: 20px;
+  padding-top: 0;
 }
 
-.footerIntro {
+.footerAbout {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 9px;
 }
 
-.footerEyebrow {
-  color: var(--color-muted);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
-.footerIntro h2 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1;
-}
-
-.siteFooter.compact .footerIntro h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-}
-
-.footerText {
-  max-width: 32ch;
-  color: rgba(248, 243, 225, 0.78);
-  line-height: 1.6;
-}
-
-.footerColumns {
+.footerMainGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 48px;
 }
 
-.footerBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footerBlockWide {
-  min-width: 0;
+.footerAboutTitle {
+  margin: 0;
+  color: var(--color-cream);
+  font-family: inherit;
+  font-size: 88px;
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.075em;
 }
 
 .footerBlockTitle {
-  font-size: 0.8rem;
+  margin: 0;
+  color: rgba(215, 255, 231, 0.62);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: rgba(227, 219, 187, 0.62);
-  margin-bottom: 4px;
 }
 
 .footerMuted {
-  color: rgba(248, 243, 225, 0.72);
-  line-height: 1.6;
+  max-width: 52ch;
+  margin: 0;
+  color: rgba(239, 255, 247, 0.82);
+  line-height: 1.5;
+}
+
+.resumeLink {
+  color: var(--color-soft);
+  font-size: 0.84rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.resumeLink:hover {
+  color: var(--color-cream);
+}
+
+.emailCta {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 16px;
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 16px 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  background: var(--glass-fill-strong);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  text-align: left;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.emailCta:hover {
+  transform: translateY(-3px);
+  border-color: var(--glass-highlight);
+  background: linear-gradient(145deg, rgba(231, 255, 243, 0.26), rgba(85, 237, 170, 0.1));
+}
+
+.emailCtaLabel {
+  color: var(--color-cream);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 650;
+}
+
+.emailCtaAddress {
+  grid-column: 1;
+  color: rgba(239, 255, 247, 0.62);
+  font-size: 0.82rem;
+}
+
+.emailCtaArrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--color-soft);
+  font-size: 1.8rem;
+}
+
+.footerConnect {
+  min-width: 0;
+}
+
+.footerNavigation {
+  margin-top: auto;
+  text-align: center;
+}
+
+.navigationLinks {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.navigationLinks a {
+  color: rgba(239, 255, 247, 0.58);
+  font-size: 0.78rem;
+  transition: color 0.2s ease;
+}
+
+.navigationLinks a:hover {
+  color: var(--color-cream);
 }
 
 .footerLinksFlat {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 18px;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .footerLinkRow {
   min-width: 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(248, 243, 225, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid rgba(204, 255, 229, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.footerLinkRow:hover {
+  transform: translateY(-2px);
+  border-color: var(--glass-border);
+  background: rgba(85, 237, 170, 0.12);
 }
 
 .footerLabel {
-  font-size: 0.75rem;
+  display: block;
+  margin-bottom: 3px;
+  color: rgba(215, 255, 231, 0.56);
+  font-size: 0.66rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(227, 219, 187, 0.62);
 }
 
 .footerValue {
-  font-size: 1rem;
-  line-height: 1.4;
-  word-break: break-word;
+  display: block;
+  overflow: hidden;
   color: var(--color-cream);
-}
-
-@media (max-width: 1024px) {
-  .siteFooter {
-    grid-template-columns: 1fr;
-  }
-
-  .footerColumns {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footerBlockWide {
-    grid-column: 1 / -1;
-  }
-
-  .footerLinksFlat {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-height: 900px) and (min-width: 769px) {
-  .siteFooter {
-    gap: 20px;
-    padding-top: 20px;
-  }
-
-  .footerColumns {
-    gap: 16px;
-  }
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (max-width: 640px) {
   .siteFooter {
-    padding-top: 18px;
+    padding: 8px 0 14px;
+    gap: 14px;
   }
 
-  .footerColumns {
+  .footerAboutTitle {
+    font-size: 38px;
+  }
+
+  .emailCta {
+    padding: 14px 16px;
+  }
+
+  .footerMainGrid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .footerLinksFlat {
-    grid-template-columns: 1fr;
+  .navigationLinks {
+    flex-wrap: wrap;
+    gap: 8px 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footerMainGrid {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .footerAboutTitle {
+    font-size: 82px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footerAboutTitle {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footerAboutTitle {
+    font-size: 38px;
   }
 
-  .footerValue {
-    font-size: 0.95rem;
+  .footerMainGrid {
+    gap: 16px;
   }
 }

@@ -5,12 +5,17 @@
 }
 
 :root {
-  --color-deep: #3e1e68;
-  --color-muted: #5d2f77;
-  --color-soft: #e45a92;
-  --color-cream: #ffacac;
-  --color-surface: rgba(255, 172, 172, 0.08);
-  --color-border: rgba(255, 172, 172, 0.16);
+  --color-deep: #050606;
+  --color-muted: #1a2924;
+  --color-soft: #55edaa;
+  --color-cream: #effff7;
+  --color-surface: rgba(85, 237, 170, 0.08);
+  --color-border: rgba(181, 255, 220, 0.18);
+  --glass-fill: linear-gradient(145deg, rgba(222, 255, 239, 0.15), rgba(2, 8, 6, 0.34) 70%);
+  --glass-fill-strong: linear-gradient(145deg, rgba(231, 255, 243, 0.21), rgba(4, 17, 12, 0.48) 72%);
+  --glass-border: rgba(204, 255, 229, 0.24);
+  --glass-highlight: rgba(239, 255, 247, 0.42);
+  --glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.52), inset 0 1px 0 var(--glass-highlight);
 }
 
 html {
@@ -19,12 +24,28 @@ html {
 }
 
 body {
-  background: linear-gradient(to bottom, var(--color-deep), var(--color-muted));
+  background:
+    radial-gradient(circle at 12% 4%, rgba(85, 237, 170, 0.2), transparent 27%),
+    radial-gradient(circle at 88% 38%, rgba(77, 157, 255, 0.1), transparent 24%),
+    radial-gradient(circle at 72% 92%, rgba(143, 255, 207, 0.08), transparent 30%),
+    linear-gradient(135deg, #050606, #111716 54%, #080b0a);
   color: var(--color-cream);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  background-attachment: fixed;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 #root {
@@ -53,9 +74,10 @@ a {
 }
 
 .pageSectionLast {
-  height: auto;
+  height: 100svh;
   min-height: 100svh;
   scroll-snap-align: start;
+  display: flex;
 }
 
 .loadingSection {
@@ -65,18 +87,20 @@ a {
 }
 
 .contactPageShell {
+  width: 100%;
   min-height: 100svh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 36px;
+  gap: 20px;
   padding: 28px 0 32px;
 }
 
 @media (max-width: 1280px) and (min-width: 769px) {
   .contactPageShell {
-    gap: 28px;
-    padding: 20px 0 24px;
+    gap: 20px;
+    padding: 24px 0 28px;
   }
 }
 
@@ -117,6 +141,11 @@ a {
 
   .pageSection {
     height: auto;
+    min-height: 100svh;
+  }
+
+  .pageSectionLast {
+    height: 100svh;
     min-height: 100svh;
   }
 

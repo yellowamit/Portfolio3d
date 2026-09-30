@@ -5,7 +5,7 @@ import { OrbitControls, PerspectiveCamera, Stage } from "@react-three/drei";
 
 const ConsoleModelContainer = () => {
   return (
-    <Canvas dpr={[1, 1.5]}>
+    <Canvas dpr={[1, 1.25]}>
       <Suspense fallback={null}>
         <Stage environment="night" intensity={0.5}>
           <ConsoleModel />
