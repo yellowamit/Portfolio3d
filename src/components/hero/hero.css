@@ -20,7 +20,7 @@
   right: 0;
   left: 0;
   margin: auto;
-  height: 80%;
+  height: 84%;
   width: max-content;
 }
 
@@ -40,12 +40,33 @@
 
 .hTitle {
   margin-top: 50px;
-  font-size: 100px;
+  max-width: 8ch;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(4rem, 7.5vw, 8.5rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+  text-wrap: balance;
   color: var(--color-soft);
+  text-shadow: 0 12px 34px rgba(0, 12, 8, 0.24);
 }
 
 .hTitle span {
   color: var(--color-cream);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.09em;
+}
+
+.hTitle .titleLine {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+.hTitle .greeting {
+  color: var(--color-soft);
+  font-style: normal;
+  font-weight: 600;
 }
 
 .awards {
@@ -84,9 +105,14 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 16px;
-  background-color: rgba(227, 219, 187, 0.14);
-  border-bottom-right-radius: 10px;
+  padding: 16px 14px;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-top: 0;
+  border-radius: 0 0 22px 22px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
 }
 
 .follow img {
@@ -100,7 +126,8 @@
 }
 
 .followText {
-  background-color: var(--color-muted);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 12px;
   rotate: 90deg;
   width: max-content;
@@ -110,7 +137,7 @@
   padding: 0 8px;
   display: flex;
   align-items: center;
-  border-bottom-right-radius: 10px;
+  border-radius: 0 0 12px 12px;
 }
 
 .bubbleContainer {
@@ -124,8 +151,12 @@
 .bubble {
   width: 100%;
   height: 100px;
-  background-color: var(--color-cream);
-  color: var(--color-deep);
+  background: var(--glass-fill-strong);
+  color: var(--color-cream);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
   padding: 24px;
   font-size: 18px;
   border-radius: 20px 20px 0px 20px;
@@ -136,7 +167,9 @@
   height: 50px;
   border-radius: 100%;
   object-fit: cover;
-  background-color: var(--color-muted);
+  background: var(--glass-fill);
+  border: 2px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 12px 24px rgba(0, 8, 5, 0.42);
 }
 
 .certificate {
@@ -188,7 +221,7 @@
 
 @media (max-width: 1536px) {
   .hTitle {
-    font-size: 72px;
+    font-size: clamp(4rem, 7vw, 7.5rem);
   }
 }
 
@@ -203,7 +236,7 @@
 
   .hTitle {
     margin-top: 20px;
-    font-size: 64px;
+    font-size: clamp(3.6rem, 6.4vw, 6.5rem);
   }
 
   .awards {
@@ -235,7 +268,7 @@
   }
 
   .hTitle {
-    font-size: 72px;
+    font-size: 4.5rem;
   }
 
   .awards {
@@ -253,7 +286,7 @@
   }
 
   .hTitle {
-    font-size: 56px;
+    font-size: 3.9rem;
   }
 
   .hero {
@@ -307,7 +340,7 @@
 
   .hTitle {
     margin-top: 8px;
-    font-size: 54px;
+    font-size: 3.7rem;
   }
 
   .scroll {
@@ -342,7 +375,9 @@
   }
 
   .hTitle {
-    font-size: 48px;
+    max-width: 9ch;
+    font-size: clamp(3.1rem, 12vw, 4.6rem);
+    line-height: 0.94;
     margin-top: 12px;
   }
 
@@ -383,7 +418,7 @@
 
 @media (max-width: 480px) {
   .hTitle {
-    font-size: 38px;
+    font-size: 3rem;
   }
 
   .circleText {
@@ -394,5 +429,13 @@
   .arrow {
     width: 64px;
     height: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hTitle .titleLine {
+    animation: none;
+    filter: none;
+    transform: none;
   }
 }

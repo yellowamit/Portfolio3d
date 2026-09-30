@@ -1,4 +1,52 @@
 import "./footer.css";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
+
+const titleVariants = {
+  initial: {
+    x: -100,
+    y: -100,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
+const emailVariants = {
+  initial: {
+    x: -80,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.9,
+    },
+  },
+};
+
+const connectVariants = {
+  initial: {
+    x: 70,
+    opacity: 0,
+  },
+  animate: (index) => ({
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.25 + index * 0.08,
+      duration: 0.65,
+    },
+  }),
+};
 
 const footerLinks = [
   {
@@ -33,47 +81,60 @@ const footerLinks = [
   },
 ];
 
+const navigationLinks = [
+  ["Home", "#home"],
+  ["Projects", "#portfolio"],
+  ["Services", "#services"],
+  ["Contact", "#contact"],
+];
+
 const Footer = ({ compact = false }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-200px" });
+
   return (
-    <footer className={`siteFooter${compact ? " compact" : ""}`}>
-      <div className="footerIntro">
-        <p className="footerEyebrow">Website Footer</p>
-        <h2>Amit Kumar Giri</h2>
-        <p className="footerText">
-          MERN stack developer focused on building responsive, fast, and useful
-          web experiences.
-        </p>
-      </div>
-
-      <div className="footerColumns">
-        <div className="footerBlock">
-          <p className="footerBlockTitle">Navigation</p>
-          <a href="#home">Home</a>
-          <a href="#portfolio">Projects</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div className="footerBlock">
-          <p className="footerBlockTitle">About</p>
+    <footer ref={ref} className={`siteFooter${compact ? " compact" : ""}`}>
+      <div className="footerMainGrid">
+        <div className="footerAbout">
+          <motion.h1
+            variants={titleVariants}
+            animate={isInView ? "animate" : "initial"}
+            className="footerAboutTitle"
+          >
+            About
+          </motion.h1>
           <p className="footerMuted">
-            Available for freelance projects, internships, and product builds.
+            Available for freelance projects, internships, and jobs.
           </p>
           <a
+            className="resumeLink"
             href="https://drive.google.com/file/d/1k_Dv3BfPmcHmkLfu-CtotUIyni_ykOI_/view?usp=drive_link"
             target="_blank"
             rel="noreferrer"
           >
-            Resume
+            Resume <span aria-hidden="true">↗</span>
           </a>
+          <motion.a
+            variants={emailVariants}
+            animate={isInView ? "animate" : "initial"}
+            className="emailCta"
+            href="mailto:mail2amikg@gmail.com?subject=Project%20inquiry%20for%20Amit"
+          >
+            <span className="emailCtaLabel">Connect me via email</span>
+            <span className="emailCtaAddress">mail2amikg@gmail.com</span>
+            <span className="emailCtaArrow" aria-hidden="true">↗</span>
+          </motion.a>
         </div>
 
-        <div className="footerBlock footerBlockWide">
-          <p className="footerBlockTitle">Connect</p>
+        <section className="footerConnect" aria-labelledby="connect-title">
+          <p id="connect-title" className="footerBlockTitle">Connect</p>
           <div className="footerLinks footerLinksFlat">
-            {footerLinks.map((link) => (
-              <a
+            {footerLinks.map((link, index) => (
+              <motion.a
                 key={link.label}
+                custom={index}
+                variants={connectVariants}
+                animate={isInView ? "animate" : "initial"}
                 className="footerLinkRow"
                 href={link.href}
                 target={link.href.startsWith("mailto:") ? undefined : "_blank"}
@@ -81,11 +142,20 @@ const Footer = ({ compact = false }) => {
               >
                 <span className="footerLabel">{link.label}</span>
                 <span className="footerValue">{link.value}</span>
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
+        </section>
       </div>
+
+      <nav className="footerNavigation" aria-label="Footer navigation">
+        <p className="footerBlockTitle">Navigation</p>
+        <div className="navigationLinks">
+          {navigationLinks.map(([label, href]) => (
+            <a key={label} href={href}>{label}</a>
+          ))}
+        </div>
+      </nav>
     </footer>
   );
 };

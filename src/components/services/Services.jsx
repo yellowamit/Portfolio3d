@@ -46,19 +46,19 @@ const listVariants = {
 const services = [
   {
     id: 1,
-    img: "/service1.png",
+    img: "/service1.avif",
     title: "Web Development",
     counter: 5,
   },
   {
     id: 2,
-    img: "/service2.png",
+    img: "/service2.avif",
     title: "Web Design",
     counter: 2,
   },
   {
     id: 3,
-    img: "/service3.png",
+    img: "/service3.avif",
     title: "App development",
     counter: 1,
   },
@@ -119,7 +119,7 @@ const Services = () => {
           <Counter from={0} to={30} text="Github Repos" />
         </div>
       </div>
-      {!isMobile && (
+      {!isMobile && isInView && (
         <div className="sSection right">
           <Suspense fallback={<div className="modelFallback">Loading model...</div>}>
             {renderModel()}

@@ -24,7 +24,7 @@ const Speech = () => {
           repeat={Infinity}
         />
       </div>
-      <img src="/man.jpg" alt="Amit avatar" loading="lazy" decoding="async" />
+      <img src="/man.avif" alt="Amit avatar" loading="lazy" decoding="async" />
     </motion.div>
   );
 };

@@ -3,7 +3,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(62, 30, 104, 0.35), rgba(93, 47, 119, 0.88));
+  background:
+    radial-gradient(circle at 50% 18%, rgba(85, 237, 170, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(5, 6, 6, 0.2), rgba(11, 16, 14, 0.92));
   overflow: hidden;
 }
 
@@ -17,6 +19,27 @@
   font-size: 36px;
   color: var(--color-soft);
   margin-bottom: 10px;
+}
+
+.progressNote {
+  color: var(--color-cream);
+  font-size: 0.62em;
+  font-weight: 400;
+}
+
+.githubLink {
+  color: var(--color-cream);
+  font-size: 0.62em;
+  text-decoration: underline;
+  text-decoration-color: rgba(66, 227, 155, 0.65);
+  text-underline-offset: 4px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.githubLink:hover,
+.githubLink:focus-visible {
+  color: var(--color-soft);
+  text-decoration-color: var(--color-soft);
 }
 
 .progressBar {
@@ -42,22 +65,24 @@
 }
 
 .pItem {
-  background-color: rgba(255, 172, 172, 0.06);
+  background: var(--glass-fill);
   border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 350px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 172, 172, 0.1);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 16px 40px rgba(0, 8, 5, 0.3), inset 0 1px 0 rgba(226, 255, 240, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pItem:hover {
   transform: translateY(-10px);
-  box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
-  background-color: rgba(255, 172, 172, 0.1);
+  box-shadow: var(--glass-shadow);
+  background: var(--glass-fill-strong);
 }
 
 .pImage {
@@ -97,19 +122,20 @@
 }
 
 .pText button {
-  background-color: var(--color-muted);
-  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 10px;
   padding: 10px;
   font-weight: 500;
   cursor: pointer;
-  color: var(--color-deep);
+  color: var(--color-cream);
   width: 100%;
   transition: background-color 0.3s ease;
 }
 
 .pText button:hover {
-  background-color: var(--color-cream);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.42);
 }
 
 /* Responsiveness */

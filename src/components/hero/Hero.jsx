@@ -1,10 +1,10 @@
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "motion/react";
 import useIsMobile from "../../hooks/useIsMobile";
-import Shape from "./Shape";
 import Speech from "./Speech";
 import "./hero.css";
+
+const HeroScene = lazy(() => import("./HeroScene"));
 
 const awardVariants = {
   initial: {
@@ -36,21 +36,70 @@ const followVariants = {
   },
 };
 
+const titleVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      delayChildren: 0.15,
+      staggerChildren: 0.18,
+    },
+  },
+};
+
+const titleLineVariants = {
+  initial: {
+    y: 56,
+    opacity: 0,
+    filter: "blur(10px)",
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 function Hero() {
   const isMobile = useIsMobile();
+  const [showScene, setShowScene] = useState(false);
+
+  useEffect(() => {
+    if (isMobile) return undefined;
+
+    const loadScene = () => setShowScene(true);
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(loadScene, { timeout: 1200 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(loadScene, 250);
+    return () => window.clearTimeout(timeoutId);
+  }, [isMobile]);
 
   return (
     <div className="hero">
       <div className="hSection left">
         <motion.h1
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
+          variants={titleVariants}
+          initial="initial"
+          animate="animate"
           className="hTitle"
         >
-          Hey There,
+          <motion.span
+            variants={titleLineVariants}
+            className="titleLine greeting"
+          >
+            Hey There,
+          </motion.span>
           <br />
-          <span>I&apos;m Amit!</span>
+          <motion.span variants={titleLineVariants} className="titleLine name">
+            I&apos;m Amit!
+          </motion.span>
         </motion.h1>
 
         <motion.div
@@ -68,21 +117,21 @@ function Hero() {
           <motion.div variants={awardVariants} className="awardList">
             <motion.img
               variants={awardVariants}
-              src="/award1.png"
+              src="/award1.avif"
               alt="Award badge 1"
               loading="lazy"
               decoding="async"
             />
             <motion.img
               variants={awardVariants}
-              src="/award2.png"
+              src="/award2.avif"
               alt="Award badge 2"
               loading="lazy"
               decoding="async"
             />
             <motion.img
               variants={awardVariants}
-              src="/award3.png"
+              src="/award3.avif"
               alt="Award badge 3"
               loading="lazy"
               decoding="async"
@@ -139,13 +188,13 @@ function Hero() {
             variants={followVariants}
             href="https://www.linkedin.com/in/amit-kumar-giri-53008124a"
           >
-            <img src="/linkedin.png" alt="LinkedIn" loading="lazy" decoding="async" />
+            <img src="/linkedin.avif" alt="LinkedIn" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a variants={followVariants} href="https://twitter.com/Yellowamit">
-            <img src="/twitter.png" alt="Twitter" loading="lazy" decoding="async" />
+            <img src="/twitter.avif" alt="Twitter" loading="lazy" decoding="async" />
           </motion.a>
           <motion.a variants={followVariants} href="https://github.com/yellowamit">
-            <img src="/github.png" alt="GitHub" loading="lazy" decoding="async" />
+            <img src="/github.avif" alt="GitHub" loading="lazy" decoding="async" />
           </motion.a>
           <motion.div variants={followVariants} className="followTextContainer">
             <div className="followText">FOLLOW ME</div>
@@ -161,7 +210,7 @@ function Hero() {
         >
           <a href="https://online.gndu.ac.in/">
             <img
-              src="/certificate1.png"
+              src="/certificate1.avif"
               alt="Guru Nanak Dev University certificate"
               loading="lazy"
               decoding="async"
@@ -228,18 +277,16 @@ function Hero() {
         </motion.a>
       </div>
 
-      {!isMobile && (
+      {!isMobile && showScene && (
         <div className="bg">
-          <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 5], fov: 45 }}>
-            <Suspense fallback={null}>
-              <Shape />
-            </Suspense>
-          </Canvas>
+          <Suspense fallback={null}>
+            <HeroScene />
+          </Suspense>
         </div>
       )}
 
       <div className="hImg">
-        <img src="/hero.png" alt="Amit portrait" fetchPriority="high" />
+        <img src="/hero.avif" alt="Amit portrait" fetchPriority="high" />
       </div>
     </div>
   );
